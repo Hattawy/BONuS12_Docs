@@ -1,0 +1,203 @@
+%
+%---Beginning of Document---
+%
+\documentclass[12pt]{article}
+\usepackage[dvips]{color,graphics}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage[pdftex]{graphicx}
+\usepackage[absolute,overlay]{textpos}
+\setlength{\TPHorizModule}{1mm}
+\setlength{\TPVertModule}{1mm}
+\usepackage{rotating}
+%
+\textwidth  6.5in
+\textheight 9.0in
+\topmargin 0.0 in
+\headheight 0.0in
+\headsep 0.0in
+\oddsidemargin 0in
+\evensidemargin 0in
+\parsep 0 in
+%\parindent 0in
+\pagenumbering{arabic}
+%
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+%
+\begin{document}
+
+\title{BONuS12 Calibration Constants}
+
+\vskip 0.5cm
+
+\author{M. Hattawy and S. Kuhn\\ Old Dominion University}
+
+\date \today
+%
+\maketitle
+
+This document details the calibration constants for the BONuS12 system as 
+follows:
+
+\section*{}
+
+   
+
+   \section {Gain calibration constants}
+ The ionization electron collection system of the RTPC has 17280 readout pads. The gain of 
+      each pad is the ratio between the 
+      %%%SEK
+      energy deposited within the track segment
+      for which the ionization electrons will drift to that pad, 
+      %%%SEK
+      and the output signal
+      recorded value.      %%%SEK
+   The energy loss of a particle along its track in the RTPC,
+$\small{\frac{dE}{dX}}$, can be calculated from the collected ADCs as: 
+      \begin{equation}
+ \left\langle \frac{dE}{dX} \right\rangle= \frac{\sum\limits_{i} \frac{ADC_{i}}{Gi}}{vtl},
+\end{equation}
+where the sum runs over all the pads contributing to a track. $ADC_{i}$ is the 
+recorded amplitude in each pad $i$, and $G_{i}$ is its gain. The variable $vtl$ is the 
+      total visible length of the track in the active drift volume. 
+
+Corresponding to the 17280 readout pads for the BONuS12 RTPC, we will need a
+      %%%SEK
+   total of 17280 constants, initially each set to 1.0.
+    ~\\
+
+      %%%SEK
+We will extract the gains using two techniques. The first 
+      one is by comparing the experimental recorded $\small{\frac{dE}{dX}}$ to 
+      the expected values calculated from the Bethe-Bloch formula. The second 
+      technique is based on comparing the experimental ADCs to the GEANT4 
+      simulated ones, track by track. We
+      %%%SEK
+       can refine and cross-check 
+      %%%SEK
+       this second method by 
+      comparing the ADCs of each pad to the average ADCs of 
+       %%%SEK
+	other, adjacent pads in 
+      %%%SEK
+      the same track. These parameters will be extracted from the elastic 
+      $^1$H$(e,e'p)$ measurements at the beginning of the BONuS12 run (at 2.2 GeV beam energy). 
+
+   
+   \section {Time offset constants}
+  
+      %%%SEK
+	These constants provide the relative timing between the signals on each pad
+	and the vertex time of the trigger electron. They are
+      %%%SEK
+   $T_{lat}$ and $T_{rew}$. Initially they will be set as $T_{lat}=~8\mu s$ and 
+   $T_{rew}=~9.6\mu s$.
+~\\
+~\\
+$T_{lat}$ is the latency of the trigger, i.e. how long after a typical electron 
+leaves the vertex does the trigger signal %%%SEKneed to 
+reach the DREAM chips. %%%SEK While 
+$T_{rew}$ is the ``rewind time'', i.e. how much before the trigger time do we 
+want to start reading out the stored samples in the DREAM chips. Our first 
+guess of these two parameters will be refined from the commissioning runs for RG-C. 
+   
+  
+   \section{Drift paths and Drift speed constants}
+%%%SEK
+    In a TPC, the electrons released in an ionization drift towards the readout 
+  board following their drift paths under the effect of the applied 
+  electromagnetic field. The drift speed depends also on the gas mixture, pressure and
+  temperature. The 
+  recorded drift time with the known drift speed of the electrons provides 
+  information on how far away from the outside surface the initial ionizations happened in the drift region, 
+  leading to reconstruct the original points of ionizations in the drift 
+  region. Furthermore, due to the Lorentz angle (the curvature of ionization tracks in the
+  presence of the 5 T solenoid field), we also have the account for the displacement in $\phi$ 
+  of the position of a pad with a recorded signal and the location of the primary ionization event.
+  
+  Based on our Garfield++ simulation, the best fit of the radial and the azimuthal 
+  position  of a reconstructed hit can be formulated as a function of the elapsed drift time $t$ 
+  between the ionization and the arrival of the drift electrons at the anode as: 
+
+\begin{equation}
+    r(t)= \frac{-\sqrt{a^2 + 4bt} + a + 14b}{2b}
+\end{equation}
+  
+\begin{equation}
+   \Delta \phi (r)= c(7-\frac{r}{10}) + d(7-\frac{r}{10})^2
+\end{equation}
+  
+where $a$ and $b$ are parameters set initially by a fit in Garfield++
+based on the gas, and the electromagnetic field. Because of E \& B fields 
+non-uniformity, $a$ and $b$ depend on $z$ position along the detector. 
+
+   
+   Hence, to reconstruct tracks in three dimensions from the measured arrival times on each
+   pad of a track, we will need 
+      %%%SEK
+   four parameters, $a$, $b$, $c$, $d$, each of which are functions (4th order polynomials) of $z$ (in mm) along 
+   the detector as follows (with preliminary values from the GARFIELD++ simulation), for a total of 20
+   calibration constants:
+
+\begin{equation}
+a\_t = a1 * z^4 + a2 * z^3 + a3 *z^2 + a4 * z + a5
+\end{equation}
+with\\
+a1 = -2.48491E-4\\
+a2 = 2.21413E-4\\
+a3 = -3.11195E-3\\
+a4 = -2.75206E-1\\
+a5 = 1.74281E3\\
+
+\begin{equation}
+b = b1 * z^4 + b2 * z^3 + b3 *z^2 + b4 * z + b5
+\end{equation}
+with\\
+b1 = 2.48873E-5\\
+b2 = -1.19976E-4\\
+b3 = -3.75962E-3\\
+b4 = 5.33100E-2\\
+b5 = -1.25647E2\\
+
+
+\begin{equation}
+c = c1 * z^4 + c2 * z^3 + c3 *z^2 + c4 * z + c5
+\end{equation}
+with\\
+c1 = -3.32718E-8\\
+c2 = 1.92110E-7\\
+c3 = 2.16919E-6\\
+c4 = -8.10207E-5\\
+c5 = 1.68481E-1\\
+
+\begin{equation}
+d = d1 * z^4 + d2 * z^3 + d3 *z^2 + d4 * z + d5
+\end{equation}
+with\\
+d1 = -3.23019E-9\\
+d2 = -6.92075E-8\\
+d3 = 1.24731E-5\\
+d4 = 2.57684E-5\\
+d5 = 2.10680E-2\\
+
+     %%%SEK
+ 
+These constants
+will be recalibrated using the elastic 
+      $^1$H$(e,e'p)$  data from the commissioning runs by optimizing the fit between 
+the reconstructed proton tracks and the inferred ones from the electron kinematics.
+
+In practical terms, it will be useful to normalize all drift times to the maximum drift time,
+$T_{max}$, for an ionization event that happens right at the position of the cathode. Therefore,
+we will need one additional calibration constant for $T_{max}$. This will be set
+initially again from the GARFIELD++ simulation ($T_{max} \approx 6 \mu s$) and then 
+adjusted by a fit to the elastic data. Possible small shifts over time in  $T_{max}$ 
+(due to changing gas composition, temperature, and pressure) will be monitored
+by the custom Drift time Monitoring System (DMS) that has been constructed for BONuS12.
+This will allow us to adjust the overall reconstruction from drift time to ionization point run by run
+without having to recalibrate all remaining 20 parameters.
+
+
+\end{document} 
+
