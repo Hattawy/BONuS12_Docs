@@ -5,9 +5,6 @@ pdflatex bonus12_geom.tex
 pdflatex bonus12_geom.tex 
 pdflatex bonus12_geom.tex 
 
-mkdir pdf_docs
-mv bonus12_db.pdf pdf_docs/
-mv bonus12_geom.pdf pdf_docs/
 
 rm -f *.tex~ *.mtc1 *.aux *.dvi *.lof *.log *.out *.lot *.toc *.brf *.maf 
 rm -f *.mtc *.mtc0 *.nlo *.bbl *.blg

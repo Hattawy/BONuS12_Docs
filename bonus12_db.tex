@@ -27,22 +27,67 @@
 %
 \begin{document}
 
-\title{BONuS12 Calibration Constants}
+\title{Run Group F RTPC Calibration Constants}
 
 \vskip 0.5cm
 
-\author{M. Hattawy and S. Kuhn\\ Old Dominion University}
+\author{M. Hattawy and S.E. Kuhn, Old Dominion University\\[0.1ex]
+{\it bonus12\_db.tex}}
+
 
 \date \today
 %
 \maketitle
 
-This document details the calibration constants for the BONuS12 system as 
-follows:
+This document details the calibration constants for the BONuS12 Radial Time Projection Chamber (RTPC) system. They are used for gain calibration of all 17280 pads, and for the time-to-track position conversion.
 
 \section*{}
 
-   
+\section{RTPC Calibration Constants}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular} {|l|l|} \hline
+Database Entry                                      & Description \\ \hline
+/calibration/rtpc/gain\_balance           & Relative gain of all 17280 pads \\ \hline
+/calibration/rtpc/time\_offsets           & Time offsets to determine actual drift time \\ \hline
+/calibration/rtpc/time\_parms              & Parameters for drift time to hit position conversion \\ \hline
+\end{tabular}
+\caption{Overview table for the RTPC calibration constants.}
+\label{rtcp-parms}
+\end{center}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Table~\ref{rtcp-parms} provides an overview of the calibration constants associated 
+with the custom Radial Time Projection Chamber (RTPC) that will be used during Run Group F
+(Spring 2020). The 40 cm-long RTPC consists of a cylindrical cathode at 3 cm radius, surrounded by a 4 cm 
+wide (radially) drift region. Drift electrons released from slow-moving protons (spectators in the reaction 
+D$(e,e^\prime p_S)X$) drift to the outer radius (7 cm) of this region along curved paths (due to the 5 T
+magnetic field in the CLAS12 solenoid) and are amplified in 3 layers of GEMs spaced 3 mm apart in radius. 
+The final electrons are detected on an outer padboard of 17280 pads arranged in 180 rows in $\phi$ and
+96 columns in z. Each pad is connected to a DREAM chip FEU from the CLAS12 MVT and the signal is
+digitized as a sequence of pulse heights, 120 ns apart. This information is used to determine the mean arrival
+time of the electrons and the total charge, which is proportional to the energy loss by the detected proton.
+
+The constants fall into two 
+different categories, those associated with the gain calibration 
+and those associated with the timing calibration. A few more constants refer to the physical orientation 
+of the RTPC in space and are discussed in a separate geometry document.
+
+The CLAS12 calibration database (ccdB) is organized into columns based on {\it sector}, 
+{\it layer}, and {\it component}. The RTPC is a hermetic cylinder with $2 \pi$ azimuthal
+acceptance, located in the CLAS12 Central Detector and therefore is not
+divided into sectors, Hence, the {\it sector} is always assigned as 1. (Similarly, the {\it order} 
+variable is always 0).
+The {\it layer} variable is used to design the number of a pad within a row (the column), from 1 through 96.
+(This determines the pad position along the beam direction, $z$, for each of the 4 mm long pads).
+Finally, the {\it component} variable
+corresponds to the row of pads, from 1 through 180, where each row covers $2^\circ$ in $\phi$.
+In each of the subsections below, full details on each of the RTPC database calibration
+constants listed in Table~\ref{rtcp-parms} are provided.    
 
    \section {Gain calibration constants}
  The ionization electron collection system of the RTPC has 17280 readout pads. The gain of 
@@ -58,9 +103,9 @@ $\small{\frac{dE}{dX}}$, can be calculated from the collected ADCs as:
       \begin{equation}
  \left\langle \frac{dE}{dX} \right\rangle= \frac{\sum\limits_{i} \frac{ADC_{i}}{Gi}}{vtl},
 \end{equation}
-where the sum runs over all the pads contributing to a track. $ADC_{i}$ is the 
+where the sum runs over a set of pads contributing to a track. $ADC_{i}$ is the 
 recorded amplitude in each pad $i$, and $G_{i}$ is its gain. The variable $vtl$ is the 
-      total visible length of the track in the active drift volume. 
+      total visible length of the track in the region viewed by the set of pads. 
 
 Corresponding to the 17280 readout pads for the BONuS12 RTPC, we will need a
       %%%SEK
@@ -82,7 +127,7 @@ We will extract the gains using two techniques. The first
 	other, adjacent pads in 
       %%%SEK
       the same track. These parameters will be extracted from the elastic 
-      $^1$H$(e,e'p)$ measurements at the beginning of the BONuS12 run (at 2.2 GeV beam energy). 
+      $^1$H$(e,e^\prime p)$ measurements at the beginning of the BONuS12 run (at 2.2 GeV beam energy). 
 
    
    \section {Time offset constants}
@@ -91,16 +136,28 @@ We will extract the gains using two techniques. The first
 	These constants provide the relative timing between the signals on each pad
 	and the vertex time of the trigger electron. They are
       %%%SEK
-   $T_{lat}$ and $T_{rew}$. Initially they will be set as $T_{lat}=~8\mu s$ and 
+   $T_{lat}$, $T_{prop}$ and $T_{rew}$. Initially they will be set as $T_{lat}=~8\mu s$, $T_{prop} = 1 \mu s$ and 
    $T_{rew}=~9.6\mu s$.
 ~\\
 ~\\
 $T_{lat}$ is the latency of the trigger, i.e. how long after a typical electron 
-leaves the vertex does the trigger signal %%%SEKneed to 
-reach the DREAM chips. %%%SEK While 
-$T_{rew}$ is the ``rewind time'', i.e. how much before the trigger time do we 
+leaves the vertex does the trigger signal 
+reach the DREAM chips. This can be calculated from the typical electron flight time to the EC
+(roughly 15 ns - not critical given the RTPC time resolution), the delay between the EC hit time
+and the trigger supervisor trigger signal output, and the known delays through the BEU and FEU
+electronics for a trigger of the FEU (about 4.14 $\mu$s).
+$T_{prop}$ refers to the time between the electron vertex time and the mean (weighted) time of the first output signal from the DREAM pulse shaper, consisting of the sum of all delays (including the
+travel time of a proton into the RTPC, 
+the drift time from the first GEM to the readout pad, the cable delays, and the intrinsic DREAM signal width), plus any other offsets
+in the sample storage and conversion process. (Notice that the actual drift time in the drift region
+itself is accounted for in the next section).
+This time will be taken from the data, by looking at the
+distribution of the SHORTEST drift times for each event. This distribution will have a random (constant) accidental
+background, with a spike on top for real coincident, in-time spectator protons. $T_{prop}$ will be set such
+that this spike appears at time zero.
+Finally, $T_{rew}$ is the ``rewind time'', i.e. how much before the trigger time do we 
 want to start reading out the stored samples in the DREAM chips. Our first 
-guess of these two parameters will be refined from the commissioning runs for RG-C. 
+guess of this parameter will be refined from the commissioning runs for RG-C. 
    
   
    \section{Drift paths and Drift speed constants}
@@ -111,7 +168,7 @@ guess of these two parameters will be refined from the commissioning runs for RG
   temperature. The 
   recorded drift time with the known drift speed of the electrons provides 
   information on how far away from the outside surface the initial ionizations happened in the drift region, 
-  leading to reconstruct the original points of ionizations in the drift 
+  leading to reconstruct the original radial distance from the beam axis of ionizations in the drift 
   region. Furthermore, due to the Lorentz angle (the curvature of ionization tracks in the
   presence of the 5 T solenoid field), we also have the account for the displacement in $\phi$ 
   of the position of a pad with a recorded signal and the location of the primary ionization event.
