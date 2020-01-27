@@ -90,54 +90,59 @@ In each of the subsections below, full details on each of the RTPC database cali
 constants listed in Table~\ref{rtcp-parms} are provided.    
 
    \section {Gain calibration constants}
- The ionization electron collection system of the RTPC has 17280 readout pads. The gain of 
-      each pad is the ratio between the 
-      %%%SEK
-      energy deposited within the track segment
-      for which the ionization electrons will drift to that pad, 
-      %%%SEK
-      and the output signal
-      recorded value.      %%%SEK
-   The energy loss of a particle along its track in the RTPC,
-$\small{\frac{dE}{dX}}$, can be calculated from the collected ADCs as: 
-      \begin{equation}
+ The ionization electron collection system of the RTPC has 17280 readout pads. 
+ The gain of each pad is the ratio between the energy deposited within the 
+ track segment for which the ionization electrons will drift to that pad, and 
+ the output signal recorded value. The energy loss of a particle along its 
+ track in the RTPC, $\small{\frac{dE}{dX}}$, can be calculated from the 
+ collected ADCs as: \begin{equation}
  \left\langle \frac{dE}{dX} \right\rangle= \frac{\sum\limits_{i} \frac{ADC_{i}}{Gi}}{vtl},
 \end{equation}
 where the sum runs over a set of pads contributing to a track. $ADC_{i}$ is the 
 recorded amplitude in each pad $i$, and $G_{i}$ is its gain. The variable $vtl$ is the 
-      total visible length of the track in the region viewed by the set of pads. 
-
-Corresponding to the 17280 readout pads for the BONuS12 RTPC, we will need a
-      %%%SEK
-   total of 17280 constants, initially each set to 1.0.
+      total visible length of the track in the region viewed by the set of 
+      pads. Corresponding to the 17280 readout pads for the BONuS12 RTPC, we 
+      will need a total of 17280 constants, initially each set to 1.0.
     ~\\
 
-      %%%SEK
+       
 We will extract the gains using two techniques. The first 
       one is by comparing the experimental recorded $\small{\frac{dE}{dX}}$ to 
       the expected values calculated from the Bethe-Bloch formula. The second 
       technique is based on comparing the experimental ADCs to the GEANT4 
-      simulated ones, track by track. We
-      %%%SEK
-       can refine and cross-check 
-      %%%SEK
-       this second method by 
-      comparing the ADCs of each pad to the average ADCs of 
-       %%%SEK
-	other, adjacent pads in 
-      %%%SEK
-      the same track. These parameters will be extracted from the elastic 
-      $^1$H$(e,e^\prime p)$ measurements at the beginning of the BONuS12 run (at 2.2 GeV beam energy). 
+      simulated ones, track by track. We can refine and cross-check this second 
+      method comparing the ADCs of each pad to the average ADCs of other, 
+      adjacent pads in the same track. These parameters will be extracted from 
+      the elastic $^1$H$(e,e^\prime p)$ measurements at the beginning of the 
+      BONuS12 run (at 2.2 GeV beam energy). The relevant details on the RTPC 
+      gain calibration database are given in Table~\ref{gain}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular} {|c|c|c|c|} \hline
+Name      & \multicolumn{3}{|l|} {gain\_balance} \\ \hline
+Full path & \multicolumn{3}{|l|} {/calibration/rtpc/gain\_balance} \\ \hline
+Rows       & \multicolumn{3}{|l|} {17280} \\ \hline
+Columns  & \multicolumn{3}{|l|} {4} \\ \hline
+Column info  & \# & type   & name \\ \hline
+             & 0 & int   & {\it sector} \\ \cline{2-4}
+             & 1  & int   & {\it layer} \\ \cline{2-4}
+             & 2 & int   & {\it component} \\ \cline{2-4}
+             & 3 & double & {\it gain} \\ \cline{2-4} \hline
+\end{tabular}
+\caption{RTPC gain calibration database information.}
+\label{gain}
+\end{center}
+\end{table}
+
 
    
    \section {Time offset constants}
-  
-      %%%SEK
-	These constants provide the relative timing between the signals on each pad
-	and the vertex time of the trigger electron. They are
-      %%%SEK
-   $T_{lat}$, $T_{prop}$ and $T_{rew}$. Initially they will be set as $T_{lat}=~8\mu s$, $T_{prop} = 1 \mu s$ and 
-   $T_{rew}=~9.6\mu s$.
+ These constants provide the relative timing between the signals on each pad 
+ and the vertex time of the trigger electron. They are $T_{lat}$, $T_{prop}$ 
+ and $T_{rew}$. Initially they will be set as $T_{lat}=~8\mu s$, $T_{prop} = 1 
+ \mu s$ and $T_{rew}=~9.6\mu s$.
 ~\\
 ~\\
 $T_{lat}$ is the latency of the trigger, i.e. how long after a typical electron 
@@ -158,10 +163,32 @@ that this spike appears at time zero.
 Finally, $T_{rew}$ is the ``rewind time'', i.e. how much before the trigger time do we 
 want to start reading out the stored samples in the DREAM chips. Our first 
 guess of this parameter will be refined from the commissioning runs for RG-C. 
-   
+
+The relevant details on the RTPC time offset constants are given in 
+Table~\ref{time_off}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular} {|c|c|c|c|} \hline
+Name      & \multicolumn{3}{|l|} {time\_offsets} \\ \hline
+Full path & \multicolumn{3}{|l|} {/calibration/rtpc/time\_offsets} \\ \hline
+Rows       & \multicolumn{3}{|l|} {1} \\ \hline
+Columns  & \multicolumn{3}{|l|} {3} \\ \hline
+Column info  & \# & type   & name \\ \hline
+             & 0 & double   & {\it T\_lat } \\ \cline{2-4}
+             & 1  & double   & {\it T\_prop } \\ \cline{2-4}
+             & 2 & double   & {\it T\_rew } \\ \cline{2-4}  \hline
+\end{tabular}
+\caption{RTPC time offset database information.}
+\label{time_off}
+\end{center}
+\end{table}
+
+
   
    \section{Drift paths and Drift speed constants}
-%%%SEK
+ 
     In a TPC, the electrons released in an ionization drift towards the readout 
   board following their drift paths under the effect of the applied 
   electromagnetic field. The drift speed depends also on the gas mixture, pressure and
@@ -187,15 +214,12 @@ guess of this parameter will be refined from the commissioning runs for RG-C.
   
 where $a$ and $b$ are parameters set initially by a fit in Garfield++
 based on the gas, and the electromagnetic field. Because of E \& B fields 
-non-uniformity, $a$ and $b$ depend on $z$ position along the detector. 
-
-   
-   Hence, to reconstruct tracks in three dimensions from the measured arrival times on each
-   pad of a track, we will need 
-      %%%SEK
-   four parameters, $a$, $b$, $c$, $d$, each of which are functions (4th order polynomials) of $z$ (in mm) along 
-   the detector as follows (with preliminary values from the GARFIELD++ simulation), for a total of 20
-   calibration constants:
+non-uniformity, $a$ and $b$ depend on $z$ position along the detector. Hence, 
+to reconstruct tracks in three dimensions from the measured arrival times on 
+each pad of a track, we will need four parameters, $a$, $b$, $c$, $d$, each of 
+which are functions (4th order polynomials) of $z$ (in mm) along the detector 
+as follows (with preliminary values from the GARFIELD++ simulation), for a 
+total of 20 calibration constants:
 
 \begin{equation}
 a\_t = a1 * z^4 + a2 * z^3 + a3 *z^2 + a4 * z + a5
@@ -238,12 +262,36 @@ d3 = 1.24731E-5\\
 d4 = 2.57684E-5\\
 d5 = 2.10680E-2\\
 
-     %%%SEK
+
+ The relevant details on the RTPC time parameters database are given in 
+ Table~\ref{time_parms}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular} {|c|c|c|c|} \hline
+Name      & \multicolumn{3}{|l|} {time\_parms} \\ \hline
+Full path & \multicolumn{3}{|l|} {/calibration/rtpc/time\_parms} \\ \hline
+Rows       & \multicolumn{3}{|l|} {4} \\ \hline
+Columns  & \multicolumn{3}{|l|} {5} \\ \hline
+Column info  & \# & type   & name \\ \hline
+             & 0 & double   & {\it const\_4th\_exp} \\ \cline{2-4}
+             & 1  & double   & {\it const\_3rd\_exp } \\ \cline{2-4}
+             & 2 & double   & {\it const\_2nd\_exp} \\ \cline{2-4}
+            & 3 & double & {\it const\_1st\_exp} \\ \cline{2-4}                 
+            & 4 & double & {\it const} \\ \cline{2-4} \hline
+\end{tabular}
+\caption{Time parameters database information.}
+\label{time_parms}
+\end{center}
+\end{table}
+
+
+
  
-These constants
-will be recalibrated using the elastic 
-      $^1$H$(e,e'p)$  data from the commissioning runs by optimizing the fit between 
-the reconstructed proton tracks and the inferred ones from the electron kinematics.
+These constants will be recalibrated using the elastic $^1$H$(e,e'p)$  data 
+from the commissioning runs by optimizing the fit between the reconstructed 
+proton tracks and the inferred ones from the electron kinematics.
 
 In practical terms, it will be useful to normalize all drift times to the maximum drift time,
 $T_{max}$, for an ionization event that happens right at the position of the cathode. Therefore,
