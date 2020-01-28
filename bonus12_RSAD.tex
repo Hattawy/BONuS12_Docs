@@ -1,0 +1,231 @@
+%
+%---Beginning of Document---
+%
+\documentclass[12pt]{article}
+\usepackage[dvips]{color,graphics}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage[pdftex]{graphicx}
+\usepackage[absolute,overlay]{textpos}
+\setlength{\TPHorizModule}{1mm}
+\setlength{\TPVertModule}{1mm}
+\usepackage{rotating}
+%
+\textwidth  6.5in
+\textheight 9.0in
+\topmargin 0.0 in
+\headheight 0.0in
+\headsep 0.0in
+\oddsidemargin 0in
+\evensidemargin 0in
+\parsep 0 in
+%\parindent 0in
+\pagenumbering{arabic}
+%
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+%
+\begin{document}
+
+\title{Radiological Safety Analysis Document for
+BONuS12 in Hall B}
+
+
+%\author{M. Hattawy and S.E. Kuhn, Old Dominion University\\[0.1ex]
+%{\it bonus12\_db.tex}}
+
+
+\date \today
+%
+\maketitle
+
+This Radiological Safety Analysis Document (RSAD) will iden-
+tify the general conditions associated with the BONuS12 run using
+a newly built RTPC the standard CLAS12 detector in Hall B and
+the controls associated with regard to production, movement, or
+import of radioactive materials. 
+
+\section{Description}
+The BONuS12 experiment will take place in the winter of 2018 or the
+Spring of 2019 in experimental Hall B using a newly built Radial Time 
+Projection Chamber(RTPC) and the CLAS12 detector. CLAS12 is a multi-purpose
+detector system based on a toroidal (forward detector) and a solenoid (central 
+detector) magnet. The detector system includes Cherenkov Counters,
+Drift Chambers, Scintillator Counters, Silicon-strip detectors, Micro-mega
+gas detectors, and Calorimeters. The RTPC is a small cylindrical GEM de-
+tector of 40 cm long and about 8 cm of radius, surrounding the target. The
+RTPC will be tuned to detect only low momentum protons. The target for
+BONuS12 will be a tiny volume of 6 atm (absolute) deuterium or hydrogen
+gas at room temperature, located at the center of the solenoid, which is also
+the center of the hall. Beams of various energies, from 2.2 up to 10.5 GeV, and
+maximum beam currents up to 200 nA will be used for the experiment.
+The whole experiment includes two parts. The first part is calibration
+runs using 2.2 GeV beam, which includes two hours of empty target, one day
+on hydrogen and one day on deuterium target. The second part run with
+200 nA beam at 10.5 GeV, which includes 35 days on deuterium target and
+four days on hydrogen target, plus one day of calibration runs using empty
+target. The peak nucleon luminosity of BONuS12 (not including the end window
+of the beamline) is $2\times 10^{34}/cm^{2}/s$, which is only 20\% of the 
+designed CLAS12 luminosity. In order to calibrate the drift velocity of the 
+drift-gas used by the RTPC, a drift chamber (20cm $\times$ 20cm $\times$ 15 cm 
+box shape) will be used to measure the drift velocity. This device is not 
+placed in the beamline, but somewhere in
+the hall using two standard (2 $\mu$Ci) $^{90}$Sr radiation sources. The 
+$^{90}$Sr radiation sources will be well shielded. Before placing this device 
+into the hall, this device shall be reviewed and approved by the Radiation 
+Control Department.
+
+\section{Summary and Conclusions}
+The experiment is not expected to produce significant levels of radiation at 
+the site boundary. However, it will be periodically monitored by
+the Radiation Control Department to ensure that the site boundary goal is
+not exceeded. The main consideration is the manipulation and/or handling
+of target(s) or beamline hardware. As specified in Sections 4.2 and 7, the
+manipulation and/or handling of target(s) or beamline hardware (potential
+radioactive material), the transfer of radioactive material, or modifications
+to the beamline after the target assembly must be reviewed and approved by
+the Radiation Control Department. Adherence to this RSAD is vital.
+
+\section{Calculations of Radiation Deposited in the
+Experimental Hall (the Experiment Operations Envelope)}
+
+The radiation budget is the amount of radiation that is expected at the
+site boundary as a result of a given experiments. This budget may be specified 
+in terms of mrem at the site boundary or as a percentage of the Jefferson Lab 
+design goal for dose to the public, which is 10 mrem per year. The Jefferson 
+Lab design goal is 10\% of the DOE annual dose limit to the public, and
+cannot be exceeded without prior written consent from the Radiation Control 
+Department Head, the Director of Jefferson Lab, and the Department of Energy.
+
+Calculations of radiation in the hall has been carried out using FLUKA.
+To simplify the task, 42 days of maximum luminosity has been used in this
+calculation. In the FLUKA program, the RTPC holder, beam pipes and their
+end windows, the RTPC, and the CLAS12 solenoid have been included. Here
+are the FLUKA simulation results.
+\begin{itemize}
+   \item Prompt dose rate: prompt dose rate is low everywhere in the hall
+outside the beam pipe. The hot area is in the downstream of the
+target, which is below 10 rem/h.
+\item Accumulated damage: after 42 days of 200 nA and 10.5 GeV beam, the
+accumulated 1-MeV-neutron equivalent damage to silicon is less than
+      10$^{11}$ neutrons/cm$^2$ outside the beam pipe. (The limit that a 
+      silicon
+      product starts to show damage is about several 10$^{13}$ 
+      neutrons/cm$^{2}$ .)
+\item Activation: after 42 days of running, the dose rate from activation at
+30 minutes after the beam is shut down is about 0.03 mrem/h at the
+target center, less than 0.001 mrem/h at 1 m away from the beam pipe.
+\end{itemize}
+
+      These calculated results will be verified during the experiment. The site
+boundary radiation has not been calculated, but it is expected to be negligible
+based on operational experience in Hall B. This will be verified by using
+active monitors at the Jefferson Lab site boundary to keep up with the dose
+for the individual setups from Hall B and the other Halls. If it appears that
+the radiation budget will be exceeded, the Radiation Control Department
+will require a meeting with the experimenters and the Head of the Physics
+Division to determine if the experimental conditions are accurate, and to
+assess what actions may reduce the dose rates at the site boundary. If the
+site boundary dose approaches or exceeds 10 mrem during any calendar year,
+the experimental program will stop until a resolution can be reached.
+
+\section{Radiation Hazards}
+The following controls shall be used to prevent the unnecessary exposure
+of personnel and to comply with federal, state, and local regulations, as well
+as with Jefferson Lab and the experimenter’s home institution policies.
+
+\subsection{From Beam in the Hall}
+When the Hall status is Beam Permit, there are potentially lethal con-
+ditions present. Therefore, prior to going to Beam Permit, several actions
+will occur. Announcements will be made over the intercom system notifying
+personnel of a change in status from Restricted Access (free access to the
+Hall is allowed, with appropriate dosimetry and training) to Sweep Mode.
+All magnetic locks on exit doors will be activated. Persons trained to sweep
+the area will enter by keyed access (Controlled Access) and search in all areas
+of the Hall to check for personnel.
+After the sweep, another announcement will be made, indicating a change
+to Power Permit, followed by Beam Permit. The lights will dim and Run-Safe
+boxes will indicate “OPERATIONAL” and “UNSAFE”. IF YOU ARE IN
+THE HALL AT ANY TIME THAT THE RUN-SAFE BOXES INDICATE
+UNSAFE, IMMEDIATELY HIT THE BUTTON ON THE BOX.
+Controlled Area Radiation Monitors (CARMs) are located in strategic areas 
+around the Hall and the Counting House to ensure that unsafe conditions
+do not occur in occupiable areas.
+
+\subsection{From Activation of Target and Beamline Components}
+All radioactive materials brought to Jefferson Lab shall be identified to the
+Radiation Control Department. These materials include, but are not limited
+to, radioactive check sources (of any activity, exempt or non-exempt), 
+previously used targets or radioactive beamline components, or previously used
+shielding or collimators. The Radiation Control Department inventories and
+tracks all radioactive materials onsite. The Radiation Control Department
+will survey all experimental setups before experiments begin as a baseline for
+future measurements.
+
+The Radiation Control Department will coordinate all movement of used
+targets, collimators, and shields. The Radiation Control Department will
+assess the radiation exposure conditions and will implement controls as 
+necessary based on the radiological hazards.
+There shall be no local movement of activated target configurations without 
+direct supervision by the Radiation Control Department. There is no
+movement or change of target configurations in this experiment, except if the
+RTPC or the experimental target cell should fail and need to be replaced, and 
+after the end of the experiment.
+
+No work is to be performed on beamline components, which could result
+in dispersal of radioactive material (e.g., drilling, cutting, welding, etc.).
+Such activities must be conducted only with specific permission and control
+of the Radiation Control Department.
+
+\section{Incremental Shielding or Other Measures to be Taken to Reduce 
+Radiation Hazards}
+After 42 days of beam time, the accumulated 1-MeV-neutron equivalent
+damage outside the beam pipe is below 10$^{11}$ neutrons/cm$^2$ , which 
+requires no extra shielding anywhere in the hall.
+
+\section{Operations Procedures}
+All experimenters must comply with experiment-specific administrative
+controls. These controls begin with the measures outlined in the experiment's
+Conduct of Operations Document, and also include, but are not limited to,
+Radiation Work Permits, Temporary Operational Safety Procedures, and
+Operational Safety Procedures, or any verbal instructions from the Radiation
+Control Department. A general access RWP is in place that governs access
+to Hall B and the accelerator enclosure, which may be found in the Machine
+Control Center (MCC); it must be read and signed by all participants in the
+experiment. Any individual with a need to handle radioactive material at
+Jefferson Lab shall first complete Radiation Worker (RW I) training.
+There shall be adequate communication between the experimenter(s) and
+the Accelerator Crew Chief and/or Program Deputy to ensure that all power
+restrictions on the target are well known. Exceeding these power restrictions 
+may lead to excessive and unnecessary contamination, activation, and
+personnel exposure.
+No scattering chamber or downstream component may be altered out-
+side the scope of this RSAD without formal Radiation Control Department
+review. Alteration of these components (including the exit beamline itself)
+may result in increased radiation production from the Hall and a resultant
+increase in the site boundary dose.
+
+\section{Decommissioning and Decontamination of Radioactive Components}
+Experimenters shall retain all targets and experimental equipment brought
+to Jefferson Lab for temporary use during the experiment. After sufficient 
+decay of the radioactive target configurations, they shall be delivered to the 
+experimenter's home institution for final disposition. All transportation shall 
+be done in accordance with United States Department of Transportation 
+Regulations (Title 49, Code of Federal Regulations) or International Air 
+Transport Association regulations. In the event that the experimenter's home 
+institution cannot accept the radioactive material due to licensing 
+requirements, the experimenter shall arrange for appropriate fund transfers for 
+disposal of the material. Jefferson Lab cannot store indefinitely any 
+radioactive targets or experimental equipment.
+The Radiation Control Department may be reached at any time
+through the Accelerator Crew Chief (269-7050).
+
+
+Approvals:
+
+Radiation Control Department Head    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Date
+
+
+
+\end{document} 
+

@@ -2,9 +2,13 @@
 
 pdflatex bonus12_db.tex
 pdflatex bonus12_db.tex
+
 pdflatex bonus12_geom.tex 
 pdflatex bonus12_geom.tex 
 
+
+pdflatex bonus12_RSAD.tex
+pdflatex bonus12_RSAD.tex
 
 rm -f *.tex~ *.mtc1 *.aux *.dvi *.lof *.log *.out *.lot *.toc *.brf *.maf 
 rm -f *.mtc *.mtc0 *.nlo *.bbl *.blg
