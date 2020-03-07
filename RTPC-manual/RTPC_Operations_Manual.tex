@@ -1,0 +1,115 @@
+\documentclass[12pt, hidelinks, oneside]{article}
+%\documentclass[12pt]{article}
+%\usepackage[margin=1.8in]{geometry}
+%\usepackage{geometry}
+	%\geometry{total={6.0in,8.5in}, top=1.0in, left=1.0in, bindingoffset=0.5in, footskip=0.7in, headsep=0.5in, footnotesep=0.3in}
+\usepackage[nottoc,numbib]{tocbibind}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{fancyvrb}
+\usepackage{graphicx}
+\usepackage{tabto}
+\usepackage{titling}
+\usepackage{cite}
+\usepackage[hyphens,obeyspaces]{url}
+\usepackage[breaklinks,colorlinks, citecolor=red, linkcolor=blue, urlcolor=magenta]{hyperref}
+\usepackage[abs]{overpic}
+\usepackage{float}
+\usepackage{subfig}
+\usepackage{lipsum}
+\usepackage{enumitem}
+\usepackage{color}
+\usepackage[flushmargin, bottom]{footmisc}
+%\usetikzlibrary{snakes,graphs, arrows, decorations,matrix,intersections,topaths,automata,shapes.multipart, decorations.markings,arrows,shapes,trees,shapes.misc,shapes.geometric,fit,backgrounds,positioning}
+\usepackage[english]{babel}
+\usepackage{caption}
+\usepackage[toc,page,header]{appendix}
+\renewcommand{\appendixpagename}{\centering Appendix}
+\usepackage{framed}
+\usepackage{tcolorbox}
+\usepackage[english]{babel}
+\usepackage{pdfpages}
+
+\usepackage{circuitikz}
+\usepackage{tikz}
+\usepackage{cancel}
+\usepackage{soul}
+
+\graphicspath{ {figure/} }
+
+
+\title{ \bf  RTPC Operations Manual}
+\author{Jiwan Poudel}
+\date{\today}
+
+
+\begin{document}
+	%\maketitle
+	\input{Titlepage}
+	
+	\tableofcontents
+	\thispagestyle{empty}
+	\cleardoublepage
+	
+	\setcounter{page}{1}
+	
+	\section{RTPC Overview}
+		\input{Overview}
+	
+	\section{Information For Shift Takers}
+		\input{Shift_taker}
+		
+	\section{Information For RTPC Subsystem Experts}
+		\input{RTPC_expert}
+	
+	\section{RTPC Authorized Personnel}
+	\begin{table}[H]
+		\centering
+		\caption{Authorized personnel for RTPC}
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		sn & Name & phone & email\\
+		\hline
+		1 & On Call Expert & 757-329-4844 & ---\\
+		\hline
+		2 & Bueltmann, Stephen & 757-232-5368 & \href{mailto:sbueltma@odu.edu}{\nolinkurl{sbueltma@odu.edu}}\\
+		\hline
+		3 & Christy, Eric & --- & \href{mailto:christy@jlab.org}{\nolinkurl{christy@jlab.org}}\\
+		\hline
+		4 & Hattawy, Mohammad & 423-596-8352 & \href{mailto:hattawy@jlab.org}{\nolinkurl{hattawy@jlab.org}}\\
+		\hline
+		5 & Kuhn, Sebastian & 757-639-6640 & \href{mailto:skuhn@odu.edu}{\nolinkurl{skuhn@odu.edu}}\\
+		\hline
+	\end{tabular}
+	\end{table}
+ %\vspace{3cm}
+ 
+
+%\raggedright
+\bibliographystyle{unsrt}
+\begin{thebibliography}{9}
+	\bibitem{alarm-page} Hall B Alarm Handler \url{https://clasweb.jlab.org/wiki/index.php/Slow_Control_Alarms}
+	\bibitem{runpage} Hall B Run information Page  \url{https://www.jlab.org/Hall-B/run-web/}
+\end{thebibliography} 
+\newpage
+
+
+\appendix
+\label{appedix}
+\thispagestyle{empty}
+%\section{Appendix}
+\includepdf[pages=1,pagecommand=\section{Appendix: GAS System}, height=22.5cm, width=17cm]{Gas_System_Note.pdf}
+\includepdf[pages=2-]{Gas_System_Note.pdf}
+
+%\iffalse
+% \fi
+ 
+ %\vspace{1cm}
+ 
+ 
+	
+\end{document}
